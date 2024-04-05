@@ -50,13 +50,14 @@ CLIENT APP - ANDROID
 
 // FRONDEND (bao gồm các items nhỏ trong trang chính) 
 
-	+ Trang chủ(ds sản phẩm) (bảo)
+4. Giao diện XML các trang (bao gồm trang con chồng nhau)
+	+ Trang chủ (ds sản phẩm) (bảo)
 	+ Trang chi tiết sản phẩm (nam)
- 	+ Trang điều khoản và dịch vụ (nam)
-	+ Giỏ hàng (phúc)
- 	+ Thanh toán (đ anh)
-	+ Trang hóa đơn (t anh)
+  	+ Trang điều khoản và dịch vụ (nam)
+	+ Trang giỏ hàng (phúc)
+	+ Trang thanh toán (đ anh)
+	+ Trang xem hóa đơn (t anh)
 	+ Trang tài khoản (phúc)
- 	+ Trang hỗ trợ gpt (bảo)
+	+ Trang hỗ trợ gpt (bảo)
 
 
