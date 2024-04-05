@@ -23,7 +23,6 @@ import com.sgu.coffee.Model.User;
 import com.sgu.coffee.R;
 import com.sgu.coffee.Retrofit.CartAPI;
 import com.sgu.coffee.Somethings.ObjectSharedPreferences;
-import com.sgu.coffee.Storage.Caching;
 
 import java.text.NumberFormat;
 import java.util.List;
@@ -46,6 +45,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_products, parent, false);
+
         return new ViewHolder(inflate);
     }
 
@@ -72,6 +72,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                     }
                     else {
                         Toast.makeText(context.getApplicationContext(), "Thêm vào giỏ thất bại", Toast.LENGTH_SHORT).show();
+
                     }
                 }
 

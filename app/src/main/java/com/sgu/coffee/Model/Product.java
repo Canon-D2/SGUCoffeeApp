@@ -44,19 +44,19 @@ public class Product implements Serializable {
 	@Expose
 	private int quantity;
 
-//	@SerializedName("category")
+	//	@SerializedName("category")
 //	@Expose
 	private Category category;
 
-//	@SerializedName("productImage")
+	//	@SerializedName("productImage")
 //	@Expose
 	private List<ProductImage> productImage;
-	private ProductImage pdr_img;
-//	@SerializedName("order_Item")
+
+	//	@SerializedName("order_Item")
 //	@Expose
 	private List<Order_Item> order_Item;
 
-//	@SerializedName("order")
+	//	@SerializedName("order")
 //	@Expose
 	private List<Cart> cart;
 
@@ -133,9 +133,8 @@ public class Product implements Serializable {
 	}
 
 	public Category getCategory() {
-		return new Category();
+		return category;
 	}
-
 
 	public void setCategory(Category category) {
 		this.category = category;
@@ -180,27 +179,6 @@ public class Product implements Serializable {
 		this.order_Item = order_Item;
 		this.cart = cart;
 	}
-
-	public Product(int id, String product_Name, String description, int sold, int is_Active, int is_Selling, Date created_At, int price, int quantity, List<ProductImage> productImage) {
-		this.id = id;
-		this.product_Name = product_Name;
-		this.description = description;
-		this.sold = sold;
-		this.is_Active = is_Active;
-		this.is_Selling = is_Selling;
-		this.created_At = created_At;
-		this.price = price;
-		this.quantity = quantity;
-		this.productImage = productImage;
-	}
-
-	public Product(int id, String product_Name, String description) {
-		this.id = id;
-		this.product_Name = product_Name;
-		this.description = description;
-	}
-
-	public Product(){}
 
 	@Override
 	public String toString() {
