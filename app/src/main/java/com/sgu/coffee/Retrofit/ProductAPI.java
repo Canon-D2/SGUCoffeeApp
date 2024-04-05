@@ -17,7 +17,7 @@ public interface ProductAPI {
 
     @GET("bestsellers")
     Call<List<Product>> getBestSellers();
-//    @FormUrlEncoded
+    //    @FormUrlEncoded
     @GET("/search")
     Call<List<Product>> search(@Query("searchContent") String searchContent);
 
