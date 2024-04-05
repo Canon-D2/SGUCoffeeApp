@@ -46,8 +46,9 @@ CLIENT APP - ANDROID
 	+ Hỗ trợ: chatbox gpt (bảo)
 	+ Chèn quảng cáo (gg ads) (nam)
 	+ Cache lưu tạm sản phẩm khi disconnect (phúc)
-// FRONDEND (bao gồm các items nhỏ trong trang chính) 
 
+
+// FRONDEND (bao gồm các items nhỏ trong trang chính) 
 	+ Trang chủ (ds sản phẩm) ( bảo)
 	+ Trang chi tiết sản phẩm (nam)
 + Trang điều khoản và dịch vụ (nam)
