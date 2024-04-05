@@ -49,6 +49,7 @@ CLIENT APP - ANDROID
 
 
 // FRONDEND (bao gồm các items nhỏ trong trang chính) 
+
 	+ Trang chủ (ds sản phẩm) ( bảo)
 	+ Trang chi tiết sản phẩm (nam)
 	+ Trang điều khoản và dịch vụ (nam)
@@ -57,4 +58,5 @@ CLIENT APP - ANDROID
 	+ Trang xem hóa đơn (t anh)
 	+ Trang tài khoản (phúc)
 	+ Trang hỗ trợ gpt (bảo)
+
 
