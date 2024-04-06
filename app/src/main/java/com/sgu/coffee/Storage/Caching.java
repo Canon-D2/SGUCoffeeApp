@@ -106,50 +106,6 @@ public class Caching extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void addBill(Order order) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("ID", order.getId());
-        values.put("ADDRESS", order.getAddress());
-        values.put("BOOKING_DATE", String.valueOf(order.getBooking_Date()));
-        values.put("COUNTRY", order.getCountry());
-        values.put("EMAIL", order.getEmail());
-        values.put("FULLNAME", order.getFullname());
-        values.put("NOTE", order.getNote());
-        values.put("PAYMENT", order.getPayment_Method());
-        values.put("PHONE", order.getPhone());
-        values.put("STATUS", order.getStatus());
-        values.put("TOTAL", order.getTotal());
-        values.put("USR_ID", order.getUser().getId());
-        db.insert("BILL", null, values);
-        db.close();
-    }
-
-    public void addCart(Cart cart) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("ID", cart.getId());
-        values.put("COUNT", cart.getCount());
-        values.put("PRODUCT_ID", cart.getProduct().getId());
-        values.put("USER_ID", cart.getUser().getId());
-        db.insert("CART", null, values);
-        db.close();
-    }
-
-    public void addBillDetail(List<Order_Item> items) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        for(Order_Item item : items){
-            ContentValues values = new ContentValues();
-            values.put("ID", item.getId());
-            values.put("COUNT", item.getCount());
-            values.put("BILL_ID", item.getOrder().getId());
-            values.put("PRODUCT_ID", item.getProduct().getId());
-            db.insert("BILL_DETAIL", null, values);
-        }
-        db.close();
-    }
-
-
     public void updateUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -204,48 +160,6 @@ public class Caching extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void updateBill(Order order) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("ID", order.getId());
-        values.put("ADDRESS", order.getAddress());
-        values.put("BOOKING_DATE", String.valueOf(order.getBooking_Date()));
-        values.put("COUNTRY", order.getCountry());
-        values.put("EMAIL", order.getEmail());
-        values.put("FULLNAME", order.getFullname());
-        values.put("NOTE", order.getNote());
-        values.put("PAYMENT", order.getPayment_Method());
-        values.put("PHONE", order.getPhone());
-        values.put("STATUS", order.getStatus());
-        values.put("TOTAL", order.getTotal());
-        values.put("USR_ID", order.getUser().getId());
-        db.update("BILL", values, "ID = ?", new String[]{String.valueOf(order.getId())});
-        db.close();
-    }
-
-    public void updateCart(Cart cart) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("ID", cart.getId());
-        values.put("COUNT", cart.getCount());
-        values.put("PRODUCT_ID", cart.getProduct().getId());
-        values.put("USER_ID", cart.getUser().getId());
-        db.update("CART", values, "ID = ?", new String[]{String.valueOf(cart.getId())});
-        db.close();
-    }
-
-    public void updateBillDetail(List<Order_Item> items) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        for(Order_Item item : items){
-            ContentValues values = new ContentValues();
-            values.put("ID", item.getId());
-            values.put("COUNT", item.getCount());
-            values.put("BILL_ID", item.getOrder().getId());
-            values.put("PRODUCT_ID", item.getProduct().getId());
-            db.update("BILL_DETAIL", values, "ID = ?", new String[]{String.valueOf(item.getId())});
-        }
-        db.close();
-    }
 
 
     public boolean CheckCategoryData() {
@@ -272,17 +186,6 @@ public class Caching extends SQLiteOpenHelper {
         return true;
     }
 
-    public boolean CheckCartData() {
-        SQLiteDatabase sqldb = this.getWritableDatabase();
-        String Query = "Select * from CART ";
-        Cursor cursor = sqldb.rawQuery(Query, null);
-        if (cursor.getCount() <= 0) {
-            cursor.close();
-            return false;
-        }
-        cursor.close();
-        return true;
-    }
 
     public List<Category> getCategory() {
         SQLiteDatabase sqldb = this.getWritableDatabase();
@@ -304,7 +207,7 @@ public class Caching extends SQLiteOpenHelper {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try{
             SQLiteDatabase db = this.getReadableDatabase();
-            String selectQuery = "SELECT * FROM PRODUCT ";
+            String selectQuery = "SELECT * FROM PRODUCT";
             Cursor cursor = db.rawQuery(selectQuery, null);
             if (cursor.moveToFirst()) {
                 do {
@@ -340,34 +243,6 @@ public class Caching extends SQLiteOpenHelper {
         }
         return category_prd;
     }
-
-
-    public List<Cart> getCart(String usr_id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        String selectQuery = "SELECT * FROM CART WHERE USER_ID = "+usr_id;
-        Cursor cursor = db.rawQuery(selectQuery, null);
-        if (cursor.moveToFirst()) {
-            do {
-                int id = cursor.getInt(0);
-                int count = cursor.getInt(1);
-                int prd_id = cursor.getInt(2);
-                Product prd = null;
-                String selectImageQuery = "SELECT * FROM PRODUCT WHERE product_id = ?";
-                Cursor prdCursor = db.rawQuery(selectImageQuery, new String[]{String.valueOf(prd_id)});
-                if (prdCursor!=null &&prdCursor.moveToFirst()) {
-                    int sku = prdCursor.getInt(0);
-                    String product_name = prdCursor.getString(1);
-                    String description = prdCursor.getString(2);
-                    prd = new Product(sku, product_name, description);
-                }
-                prdCursor.close();
-                cart.add(new Cart(id, count, prd));
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-        return cart;
-    }
-
 
     public List<Product> getNewProducts() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
