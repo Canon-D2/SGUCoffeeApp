@@ -51,7 +51,7 @@ public class Product implements Serializable {
 //	@SerializedName("productImage")
 //	@Expose
 	private List<ProductImage> productImage;
-	private ProductImage pdr_img;
+
 //	@SerializedName("order_Item")
 //	@Expose
 	private List<Order_Item> order_Item;
@@ -133,9 +133,8 @@ public class Product implements Serializable {
 	}
 
 	public Category getCategory() {
-		return new Category();
+		return category;
 	}
-
 
 	public void setCategory(Category category) {
 		this.category = category;
@@ -193,14 +192,6 @@ public class Product implements Serializable {
 		this.quantity = quantity;
 		this.productImage = productImage;
 	}
-
-	public Product(int id, String product_Name, String description) {
-		this.id = id;
-		this.product_Name = product_Name;
-		this.description = description;
-	}
-
-	public Product(){}
 
 	@Override
 	public String toString() {

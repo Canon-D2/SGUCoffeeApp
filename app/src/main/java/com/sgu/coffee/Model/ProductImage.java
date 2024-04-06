@@ -14,25 +14,22 @@ public class ProductImage implements Serializable {
 	@SerializedName("url_Image")
 	@Expose
 	private String url_Image;
-
+	private String product_id;
 //	@SerializedName("product")
 //	@Expose
-	//private Product product;
-	private String product_id;
+	private Product product;
 
-	/*public ProductImage(int id, String url_Image, Product product) {
+	public ProductImage(int id, String url_Image, Product product) {
 		this.id = id;
 		this.url_Image = url_Image;
 		this.product = product;
-	}*/
+	}
 
 	public ProductImage(int id, String url_Image, String product_id) {
 		this.id = id;
 		this.url_Image = url_Image;
 		this.product_id = product_id;
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -45,21 +42,15 @@ public class ProductImage implements Serializable {
 	public String getUrl_Image() {
 		return url_Image;
 	}
-
 	public String getPRD_Id() {
 		return product_id;
 	}
-
-	public void setPrd_id(String product_id) {
-		this.product_id = product_id;
-	}
-
 	public void setUrl_Image(String url_Image) {
 		this.url_Image = url_Image;
 	}
 
-	/*public Product getProduct() {
-		return new Product();
+	public Product getProduct() {
+		return product;
 	}
 
 	public void setProduct(Product product) {
@@ -73,5 +64,5 @@ public class ProductImage implements Serializable {
 				", url_Image='" + url_Image + '\'' +
 				", product=" + product +
 				'}';
-	}*/
+	}
 }
